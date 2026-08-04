@@ -1,29 +1,53 @@
 document.addEventListener('DOMContentLoaded', function() {
     
-    // 1. Logika Pengiriman Form Kontak
+    // 1. Logika Pengiriman Form Kontak (Terhubung ke Formspree)
     const contactForm = document.getElementById('contactForm');
     const statusPesan = document.getElementById('statusPesan');
 
     if (contactForm) {
-        contactForm.addEventListener('submit', function(e) {
-            e.preventDefault();
+        contactForm.addEventListener('submit', async function(e) {
+            e.preventDefault(); // Mencegah halaman reload
 
-            const nama = document.getElementById('nama').value;
-
-            // Simulasi loading dan sukses
             const btnSubmit = contactForm.querySelector('button');
             const originalText = btnSubmit.innerHTML;
+            
+            // Ubah tombol jadi status loading
             btnSubmit.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Mengirim...';
             btnSubmit.disabled = true;
 
-            setTimeout(() => {
-                statusPesan.style.color = '#38bdf8'; 
-                statusPesan.innerHTML = `<i class="fa-solid fa-circle-check"></i> Pesan terkirim! Terima kasih, ${nama}.`;
-                
-                contactForm.reset();
+            // Mengambil data dari form
+            const formData = new FormData(contactForm);
+
+            try {
+                // Mengirim data ke Formspree
+                const response = await fetch(contactForm.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+
+                if (response.ok) {
+                    // Jika berhasil terkirim
+                    statusPesan.style.color = '#38bdf8'; 
+                    statusPesan.innerHTML = `<i class="fa-solid fa-circle-check"></i> Pesan berhasil terkirim!`;
+                    contactForm.reset();
+                } else {
+                    // Jika ada error dari Formspree
+                    statusPesan.style.color = '#ef4444'; // Warna merah
+                    statusPesan.innerHTML = `<i class="fa-solid fa-circle-xmark"></i> Ups! Gagal mengirim pesan.`;
+                }
+            } catch (error) {
+                // Jika masalah jaringan
+                statusPesan.style.color = '#ef4444';
+                statusPesan.innerHTML = `<i class="fa-solid fa-circle-xmark"></i> Terjadi masalah koneksi jaringan.`;
+            } finally {
+                // Kembalikan tombol seperti semula
                 btnSubmit.innerHTML = originalText;
                 btnSubmit.disabled = false;
 
+                // Hilangkan pesan status setelah 5 detik
                 setTimeout(() => {
                     statusPesan.style.opacity = '0';
                     setTimeout(() => {
@@ -31,7 +55,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         statusPesan.style.opacity = '1';
                     }, 500);
                 }, 5000);
-            }, 1500); // Jeda 1.5 detik seolah-olah mengirim ke server
+            }
         });
     }
 
