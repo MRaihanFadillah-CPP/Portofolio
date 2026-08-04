@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portofolio | Raihan Fadillah</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Font Google -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome untuk Ikon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- Navigasi -->
+    <header>
+        <nav class="navbar">
+            <h1 class="logo">RF<span class="dot">.</span></h1>
+            <ul class="nav-links">
+                <li><a href="#beranda">Beranda</a></li>
+                <li><a href="#tentang">Tentang</a></li>
+                <li><a href="#keahlian">Keahlian</a></li>
+                <li><a href="#kontak">Kontak</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Bagian Perkenalan (Hero) -->
+    <section id="beranda" class="hero">
+        <div class="hero-content reveal">
+            <p class="greeting">Halo, selamat datang! Saya</p>
+            <h2>Raihan Fadillah</h2>
+            <h3 class="typing-text">Mahasiswa Ilmu Komputer <span class="highlight">&</span> Pengembang Perangkat Lunak</h3>
+            <p class="desc">Fokus pada penyelesaian masalah melalui baris kode, perancangan basis data relasional yang terstruktur, dan pengembangan utilitas sistem yang efisien.</p>
+            <div class="hero-buttons">
+                <a href="#kontak" class="btn btn-primary">Mulai Kolaborasi <i class="fa-solid fa-arrow-right"></i></a>
+                <a href="#keahlian" class="btn btn-outline">Lihat Keahlian</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bagian Tentang -->
+    <section id="tentang" class="about">
+        <div class="reveal">
+            <h2 class="section-title">Tentang Saya</h2>
+            <div class="about-content">
+                <p>Saya mendalami bidang teknologi dengan ketertarikan khusus pada efisiensi *backend* dan logika program. Dari merancang *flowchart* sistem hingga mengimplementasikan *Object-Oriented Programming* (OOP), saya selalu berusaha menciptakan solusi yang tidak hanya berfungsi, tetapi juga terstruktur dengan baik dan mudah dikembangkan.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bagian Keahlian -->
+    <section id="keahlian" class="skills">
+        <div class="reveal">
+            <h2 class="section-title">Keahlian <span class="highlight">&</span> Alat</h2>
+            <div class="skill-container">
+                <!-- Kartu Skill 1 -->
+                <div class="skill-card">
+                    <i class="fa-solid fa-code icon"></i>
+                    <h3>C++ & Python</h3>
+                    <p>Pengembangan perangkat lunak, algoritma, otomatisasi tugas, dan utilitas sistem.</p>
+                </div>
+                <!-- Kartu Skill 2 -->
+                <div class="skill-card">
+                    <i class="fa-solid fa-database icon"></i>
+                    <h3>Basis Data</h3>
+                    <p>Manajemen data, normalisasi, dan perancangan skema relasional yang efisien.</p>
+                </div>
+                <!-- Kartu Skill 3 -->
+                <div class="skill-card">
+                    <i class="fa-solid fa-sitemap icon"></i>
+                    <h3>System Design</h3>
+                    <p>Pembuatan *flowchart*, alur logika program, dan arsitektur sistem.</p>
+                </div>
+                <!-- Kartu Skill 4 -->
+                <div class="skill-card">
+                    <i class="fa-solid fa-toolbox icon"></i>
+                    <h3>Tools & Kreatif</h3>
+                    <p>Pengalaman menggunakan GitHub Copilot, serta pengeditan visual dengan Canva & CapCut.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bagian Kontak -->
+    <section id="kontak" class="contact">
+        <div class="reveal">
+            <h2 class="section-title">Mari Terhubung</h2>
+            <p class="contact-desc">Punya ide proyek atau sekadar ingin berdiskusi soal teknologi? Kirimkan pesan di bawah ini.</p>
+            <form id="contactForm" class="contact-form">
+                <div class="input-group">
+                    <input type="text" id="nama" placeholder="Nama Lengkap" required>
+                </div>
+                <div class="input-group">
+                    <input type="email" id="email" placeholder="Alamat Email" required>
+                </div>
+                <div class="input-group">
+                    <textarea id="pesan" rows="5" placeholder="Tulis pesan Anda di sini..." required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary w-100">Kirim Pesan <i class="fa-solid fa-paper-plane"></i></button>
+            </form>
+            <p id="statusPesan" class="status-message"></p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2026 Raihan Fadillah. Dibangun dengan kode dan kopi.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
