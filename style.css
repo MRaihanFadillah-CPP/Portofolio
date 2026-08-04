@@ -142,6 +142,7 @@ section {
 
 .highlight {
     background: var(--grad-primary);
+    background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
@@ -191,6 +192,7 @@ section {
     font-weight: 800;
     margin-bottom: 10px;
     background: linear-gradient(180deg, #ffffff 0%, #94a3b8 100%);
+    background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     letter-spacing: -1px;
