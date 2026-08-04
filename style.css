@@ -16,9 +16,18 @@
 ::-webkit-scrollbar-thumb { background: rgba(79, 172, 254, 0.3); border-radius: 5px; }
 ::-webkit-scrollbar-thumb:hover { background: var(--accent-dark); }
 
-/* Pengaturan Dasar */
+/* Pengaturan Dasar & KUNCI ANTI-BOCOR KANAN */
 * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; scroll-behavior: smooth; }
-body { background-color: var(--bg-base); color: var(--text-main); line-height: 1.7; overflow-x: hidden; position: relative; }
+
+html, body { 
+    background-color: var(--bg-base); 
+    color: var(--text-main); 
+    line-height: 1.7; 
+    overflow-x: hidden; /* Memotong elemen yang keluar jalur */
+    width: 100%; /* Mengunci lebar */
+    max-width: 100vw;
+    position: relative; 
+}
 
 /* Elemen Cahaya Dekoratif Latar Belakang */
 .bg-glow { position: absolute; width: 600px; height: 600px; background: radial-gradient(circle, rgba(0,242,254,0.08) 0%, rgba(0,0,0,0) 70%); border-radius: 50%; z-index: -1; pointer-events: none; animation: pulse 8s infinite alternate; }
@@ -88,7 +97,7 @@ section { padding: 130px 5% 100px; max-width: 1200px; margin: auto; position: re
 .skill-card h3 { margin-bottom: 15px; font-size: 20px; font-weight: 700; }
 .skill-card p { color: var(--text-muted); font-size: 15px; }
 
-/* Projects Section (BARU) */
+/* Projects Section */
 .project-container { display: flex; flex-wrap: wrap; justify-content: center; gap: 30px; }
 .project-card { background-color: var(--bg-surface); border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 20px; padding: 40px 30px; text-align: left; flex: 1 1 300px; max-width: 350px; transition: all 0.4s ease; display: flex; flex-direction: column; }
 .project-card:hover { transform: translateY(-10px); border-color: var(--accent-dark); box-shadow: 0 10px 30px rgba(0,0,0,0.5); background-color: rgba(30, 41, 59, 0.6); }
