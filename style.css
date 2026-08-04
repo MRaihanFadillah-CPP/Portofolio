@@ -167,6 +167,11 @@ section {
     text-align: center;
 }
 
+.hero-content {
+    width: 100%;
+    padding: 0 20px;
+}
+
 .badge {
     display: inline-block;
     padding: 8px 16px;
@@ -182,13 +187,14 @@ section {
 }
 
 .hero h2 {
-    font-size: 72px;
+    font-size: clamp(32px, 5vw, 72px); 
     font-weight: 800;
     margin-bottom: 10px;
     background: linear-gradient(180deg, #ffffff 0%, #94a3b8 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     letter-spacing: -1px;
+    line-height: 1.2;
 }
 
 .hero h3 {
@@ -390,7 +396,6 @@ footer {
 /* Responsif HP */
 @media (max-width: 768px) {
     .nav-links { display: none; }
-    .hero h2 { font-size: 48px; }
     .hero h3 { font-size: 18px; }
     .hero-buttons { flex-direction: column; }
     .section-title { font-size: 32px; }
