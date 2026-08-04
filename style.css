@@ -23,8 +23,8 @@ html, body {
     background-color: var(--bg-base); 
     color: var(--text-main); 
     line-height: 1.7; 
-    overflow-x: hidden; /* Memotong elemen yang keluar jalur */
-    width: 100%; /* Mengunci lebar */
+    overflow-x: hidden; 
+    width: 100%; 
     max-width: 100vw;
     position: relative; 
 }
@@ -47,8 +47,6 @@ header { position: fixed; width: 100%; top: 0; background-color: var(--nav-blur)
 /* Tombol Menu Hamburger */
 .menu-toggle { display: none; flex-direction: column; cursor: pointer; gap: 6px; z-index: 1001; }
 .menu-toggle .bar { width: 28px; height: 3px; background-color: var(--text-main); border-radius: 3px; transition: all 0.3s ease-in-out; }
-
-/* Hamburger Menu Animations */
 .menu-toggle.is-active .bar:nth-child(2) { opacity: 0; }
 .menu-toggle.is-active .bar:nth-child(1) { transform: translateY(9px) rotate(45deg); background-color: var(--accent-glow); }
 .menu-toggle.is-active .bar:nth-child(3) { transform: translateY(-9px) rotate(-45deg); background-color: var(--accent-glow); }
@@ -120,11 +118,9 @@ footer { text-align: center; padding: 40px; border-top: 1px solid rgba(255, 255,
 
 /* Responsif HP & Tablet */
 @media (max-width: 768px) {
-    /* Menu Mobile Setup */
     .menu-toggle { display: flex; }
     .nav-links { position: absolute; top: 100%; left: 0; width: 100%; background-color: rgba(10, 15, 30, 0.95); backdrop-filter: blur(20px); flex-direction: column; align-items: center; padding: 30px 0; gap: 25px; border-bottom: 1px solid rgba(255,255,255,0.05); opacity: 0; pointer-events: none; transform: translateY(-20px); }
     .nav-links.active { opacity: 1; pointer-events: auto; transform: translateY(0); }
-    
     .hero h3 { font-size: 16px; height: auto; }
     .hero-buttons { flex-direction: column; }
     .section-title { font-size: 32px; }

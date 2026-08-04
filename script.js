@@ -60,7 +60,7 @@ document.addEventListener('DOMContentLoaded', function() {
     window.addEventListener('scroll', revealOnScroll);
     revealOnScroll();
 
-    // 3. Menu Hamburger (Fitur Baru)
+    // 3. Menu Hamburger
     const mobileMenu = document.getElementById('mobile-menu');
     const navLinks = document.querySelector('.nav-links');
     const navItems = document.querySelectorAll('.nav-links a');
@@ -71,7 +71,6 @@ document.addEventListener('DOMContentLoaded', function() {
             navLinks.classList.toggle('active');
         });
 
-        // Tutup menu otomatis setelah salah satu link di-klik
         navItems.forEach(item => {
             item.addEventListener('click', function() {
                 mobileMenu.classList.remove('is-active');
@@ -80,7 +79,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // 4. Typing Effect Otomatis (Fitur Baru)
+    // 4. Typing Effect Otomatis
     const textArray = ["Mahasiswa Ilmu Komputer", "Pengembang Perangkat Lunak", "Penggemar Basis Data"];
     const typingDelay = 100;
     const erasingDelay = 50;
@@ -111,7 +110,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // Mulai animasi mengetik saat halaman siap
     if(typeWriterElement) {
         setTimeout(type, 1000);
     }
