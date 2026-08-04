@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     if (contactForm) {
         contactForm.addEventListener('submit', async function(e) {
-            // e.preventDefault(); // Mencegah halaman reload
+            e.preventDefault(); // Mencegah halaman reload
 
             const btnSubmit = contactForm.querySelector('button');
             const originalText = btnSubmit.innerHTML;
