@@ -1,83 +1,118 @@
 document.addEventListener('DOMContentLoaded', function() {
     
-    // 1. Logika Pengiriman Form Kontak (Terhubung ke Formspree)
+    // 1. Logika Pengiriman Form Kontak (Formspree)
     const contactForm = document.getElementById('contactForm');
     const statusPesan = document.getElementById('statusPesan');
 
     if (contactForm) {
         contactForm.addEventListener('submit', async function(e) {
-            e.preventDefault(); // Mencegah halaman reload saat form disubmit
-
+            e.preventDefault(); 
             const btnSubmit = contactForm.querySelector('button');
             const originalText = btnSubmit.innerHTML;
             
-            // Ubah tombol jadi status loading
             btnSubmit.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Mengirim...';
             btnSubmit.disabled = true;
 
-            // Mengambil data dari form
             const formData = new FormData(contactForm);
 
             try {
-                // Mengirim data ke Formspree via Fetch API
                 const response = await fetch(contactForm.action, {
                     method: 'POST',
                     body: formData,
-                    headers: {
-                        'Accept': 'application/json'
-                    }
+                    headers: { 'Accept': 'application/json' }
                 });
 
                 if (response.ok) {
-                    // Jika berhasil terkirim
                     statusPesan.style.color = '#00f2fe'; 
                     statusPesan.innerHTML = `<i class="fa-solid fa-circle-check"></i> Pesan berhasil terkirim!`;
                     contactForm.reset();
                 } else {
-                    // Jika ada error dari Formspree
-                    statusPesan.style.color = '#ef4444'; // Warna merah error
+                    statusPesan.style.color = '#ef4444'; 
                     statusPesan.innerHTML = `<i class="fa-solid fa-circle-xmark"></i> Ups! Gagal mengirim pesan.`;
                 }
             } catch (error) {
-                // Jika ada masalah jaringan/koneksi
                 statusPesan.style.color = '#ef4444';
                 statusPesan.innerHTML = `<i class="fa-solid fa-circle-xmark"></i> Terjadi masalah koneksi jaringan.`;
             } finally {
-                // Kembalikan tombol seperti semula setelah proses selesai
                 btnSubmit.innerHTML = originalText;
                 btnSubmit.disabled = false;
-
-                // Hilangkan pesan status secara perlahan setelah 5 detik
                 setTimeout(() => {
                     statusPesan.style.transition = 'opacity 0.5s ease';
                     statusPesan.style.opacity = '0';
-                    setTimeout(() => {
-                        statusPesan.innerHTML = '';
-                        statusPesan.style.opacity = '1';
-                    }, 500);
+                    setTimeout(() => { statusPesan.innerHTML = ''; statusPesan.style.opacity = '1'; }, 500);
                 }, 5000);
             }
         });
     }
 
-    // 2. Animasi Reveal saat Scroll (Intersection Observer Manual)
+    // 2. Animasi Reveal saat Scroll
     const reveals = document.querySelectorAll('.reveal');
-
     const revealOnScroll = function() {
         for (let i = 0; i < reveals.length; i++) {
             const windowHeight = window.innerHeight;
             const elementTop = reveals[i].getBoundingClientRect().top;
-            const elementVisible = 100; // Jarak trigger dari bawah layar
-
+            const elementVisible = 100; 
             if (elementTop < windowHeight - elementVisible) {
                 reveals[i].classList.add('active');
             }
         }
     };
-
-    // Tambahkan event listener saat user melakukan scrolling
     window.addEventListener('scroll', revealOnScroll);
-    
-    // Panggil fungsi sekali saat halaman baru dimuat agar elemen di tampilan awal langsung muncul
     revealOnScroll();
+
+    // 3. Menu Hamburger (Fitur Baru)
+    const mobileMenu = document.getElementById('mobile-menu');
+    const navLinks = document.querySelector('.nav-links');
+    const navItems = document.querySelectorAll('.nav-links a');
+
+    if (mobileMenu) {
+        mobileMenu.addEventListener('click', function() {
+            mobileMenu.classList.toggle('is-active');
+            navLinks.classList.toggle('active');
+        });
+
+        // Tutup menu otomatis setelah salah satu link di-klik
+        navItems.forEach(item => {
+            item.addEventListener('click', function() {
+                mobileMenu.classList.remove('is-active');
+                navLinks.classList.remove('active');
+            });
+        });
+    }
+
+    // 4. Typing Effect Otomatis (Fitur Baru)
+    const textArray = ["Mahasiswa Ilmu Komputer", "Pengembang Perangkat Lunak", "Penggemar Basis Data"];
+    const typingDelay = 100;
+    const erasingDelay = 50;
+    const newTextDelay = 2000; 
+    let textArrayIndex = 0;
+    let charIndex = 0;
+    const typeWriterElement = document.getElementById("typewriter");
+
+    function type() {
+        if (charIndex < textArray[textArrayIndex].length) {
+            typeWriterElement.textContent += textArray[textArrayIndex].charAt(charIndex);
+            charIndex++;
+            setTimeout(type, typingDelay);
+        } else {
+            setTimeout(erase, newTextDelay);
+        }
+    }
+
+    function erase() {
+        if (charIndex > 0) {
+            typeWriterElement.textContent = textArray[textArrayIndex].substring(0, charIndex - 1);
+            charIndex--;
+            setTimeout(erase, erasingDelay);
+        } else {
+            textArrayIndex++;
+            if (textArrayIndex >= textArray.length) textArrayIndex = 0;
+            setTimeout(type, typingDelay + 500);
+        }
+    }
+
+    // Mulai animasi mengetik saat halaman siap
+    if(typeWriterElement) {
+        setTimeout(type, 1000);
+    }
 });
