@@ -146,7 +146,7 @@ section {
     -webkit-text-fill-color: transparent;
 }
 
-/* Animasi Reveal */
+/* Animasi Reveal saat Scroll */
 .reveal {
     opacity: 0;
     transform: translateY(50px);
