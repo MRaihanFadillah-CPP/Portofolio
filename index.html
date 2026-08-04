@@ -19,10 +19,19 @@
     <header>
         <nav class="navbar">
             <h1 class="logo">MRF<span class="dot">.</span></h1>
+            
+            <!-- Tombol Hamburger untuk HP -->
+            <div class="menu-toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+
             <ul class="nav-links">
                 <li><a href="#beranda">Beranda</a></li>
                 <li><a href="#tentang">Tentang</a></li>
                 <li><a href="#keahlian">Keahlian</a></li>
+                <li><a href="#proyek">Proyek</a></li>
                 <li><a href="#kontak">Kontak</a></li>
             </ul>
         </nav>
@@ -33,11 +42,11 @@
         <div class="hero-content reveal">
             <div class="badge">Selamat Datang</div>
             <h2>Muhammad Raihan Fadillah</h2>
-            <h3 class="typing-text">Mahasiswa Ilmu Komputer <span class="highlight">&</span> Pengembang Perangkat Lunak</h3>
+            <h3 class="typing-text"><span id="typewriter"></span><span class="cursor">|</span></h3>
             <p class="desc">Menciptakan solusi efisien melalui baris kode, arsitektur sistem yang terstruktur, dan perancangan basis data yang solid.</p>
             <div class="hero-buttons">
-                <a href="#kontak" class="btn btn-primary">Mulai Kolaborasi <i class="fa-solid fa-arrow-right"></i></a>
-                <a href="#keahlian" class="btn btn-outline">Eksplorasi Keahlian</a>
+                <a href="#proyek" class="btn btn-primary">Lihat Karya <i class="fa-solid fa-arrow-right"></i></a>
+                <a href="#kontak" class="btn btn-outline">Mari Berdiskusi</a>
             </div>
         </div>
     </section>
@@ -81,13 +90,49 @@
         </div>
     </section>
 
+    <!-- Bagian Proyek (FITUR BARU) -->
+    <section id="proyek" class="projects">
+        <div class="reveal">
+            <h2 class="section-title">Proyek <span class="highlight">Terbaru</span></h2>
+            <div class="project-container">
+                <!-- Proyek 1 -->
+                <div class="project-card">
+                    <div class="project-icon"><i class="fa-brands fa-python"></i></div>
+                    <h3>Sistem Otomatisasi Python</h3>
+                    <p>Skrip cerdas berbasis Object-Oriented Programming untuk mempercepat tugas pengolahan data.</p>
+                    <div class="tags">
+                        <span>Python</span><span>OOP</span>
+                    </div>
+                </div>
+                <!-- Proyek 2 -->
+                <div class="project-card">
+                    <div class="project-icon"><i class="fa-solid fa-server"></i></div>
+                    <h3>Arsitektur Basis Data Akademik</h3>
+                    <p>Perancangan dan normalisasi skema database relasional untuk manajemen data yang efisien dan tanpa redundansi.</p>
+                    <div class="tags">
+                        <span>SQL</span><span>Database Design</span>
+                    </div>
+                </div>
+                <!-- Proyek 3 -->
+                <div class="project-card">
+                    <div class="project-icon"><i class="fa-solid fa-terminal"></i></div>
+                    <h3>Utilitas Sistem C++</h3>
+                    <p>Pengembangan program CLI (Command Line Interface) yang cepat dan ringan untuk manajemen memori.</p>
+                    <div class="tags">
+                        <span>C++</span><span>Algorithms</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Bagian Kontak -->
     <section id="kontak" class="contact">
         <div class="reveal">
             <h2 class="section-title">Mari Terhubung</h2>
             <p class="contact-desc">Siap untuk merealisasikan ide besar? Tinggalkan pesan dan mari berdiskusi.</p>
             
-            <!-- Form Kontak Terhubung ke Formspree -->
+            <!-- Form Kontak -->
             <form id="contactForm" class="contact-form" action="https://formspree.io/f/mrpzzblr" method="POST">
                 <div class="input-group">
                     <input type="text" id="nama" name="nama" placeholder="Nama Lengkap" required>
@@ -107,7 +152,7 @@
     <!-- Footer -->
     <footer>
         <div class="footer-content">
-            <p>&copy; 2026 Muhammad Raihan Fadillah. Dibangun dengan presisi dan secangkir kopi.</p>
+            <p>&copy; 2026 Muhammad Raihan Fadillah. Dibangun dengan presisi dan dedikasi.</p>
         </div>
     </footer>
 
