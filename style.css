@@ -1,10 +1,10 @@
 /* Variabel Tema Midnight Frost */
 :root {
-    --bg-base: #040914; /* Biru sangat gelap (hampir hitam) */
+    --bg-base: #040914; 
     --bg-surface: rgba(16, 25, 43, 0.4);
     --text-main: #f1f5f9;
     --text-muted: #94a3b8;
-    --accent-glow: #00f2fe; /* Biru Es */
+    --accent-glow: #00f2fe; 
     --accent-dark: #4facfe;
     --grad-primary: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
     --nav-blur: rgba(4, 9, 20, 0.7);
@@ -275,10 +275,11 @@ section {
     line-height: 1.8;
 }
 
-/* Skills Section */
+/* Skills Section (Diperbarui dengan Flexbox) */
 .skill-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     gap: 30px;
 }
 
@@ -290,6 +291,8 @@ section {
     border: 1px solid rgba(255, 255, 255, 0.03);
     backdrop-filter: blur(10px);
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    flex: 1 1 260px; 
+    max-width: 280px; 
 }
 
 .skill-card:hover {
