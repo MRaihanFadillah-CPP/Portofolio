@@ -29,8 +29,8 @@
     <section id="beranda" class="hero">
         <div class="hero-content reveal">
             <p class="greeting">Halo, selamat datang! Saya</p>
-            <h2>Muhammad Raihan Fadillah</h2>
-            <h3 class="typing-text">Mahasiswa Informatika <span class="highlight">&</span> Pengembang Perangkat Lunak</h3>
+            <h2>Raihan Fadillah</h2>
+            <h3 class="typing-text">Mahasiswa Ilmu Komputer <span class="highlight">&</span> Pengembang Perangkat Lunak</h3>
             <p class="desc">Fokus pada penyelesaian masalah melalui baris kode, perancangan basis data relasional yang terstruktur, dan pengembangan utilitas sistem yang efisien.</p>
             <div class="hero-buttons">
                 <a href="#kontak" class="btn btn-primary">Mulai Kolaborasi <i class="fa-solid fa-arrow-right"></i></a>
@@ -44,7 +44,7 @@
         <div class="reveal">
             <h2 class="section-title">Tentang Saya</h2>
             <div class="about-content">
-                <p>Saya mendalami bidang teknologi dengan ketertarikan khusus pada efisiensi backend dan logika program. Dari merancang flowchart sistem hingga mengimplementasikan Object-Oriented Programming (OOP), saya selalu berusaha menciptakan solusi yang tidak hanya berfungsi, tetapi juga terstruktur dengan baik dan mudah dikembangkan.</p>
+                <p>Saya mendalami bidang teknologi dengan ketertarikan khusus pada efisiensi *backend* dan logika program. Dari merancang *flowchart* sistem hingga mengimplementasikan *Object-Oriented Programming* (OOP), saya selalu berusaha menciptakan solusi yang tidak hanya berfungsi, tetapi juga terstruktur dengan baik dan mudah dikembangkan.</p>
             </div>
         </div>
     </section>
@@ -54,25 +54,21 @@
         <div class="reveal">
             <h2 class="section-title">Keahlian <span class="highlight">&</span> Alat</h2>
             <div class="skill-container">
-                <!-- Kartu Skill 1 -->
                 <div class="skill-card">
                     <i class="fa-solid fa-code icon"></i>
                     <h3>C++ & Python</h3>
                     <p>Pengembangan perangkat lunak, algoritma, otomatisasi tugas, dan utilitas sistem.</p>
                 </div>
-                <!-- Kartu Skill 2 -->
                 <div class="skill-card">
                     <i class="fa-solid fa-database icon"></i>
                     <h3>Basis Data</h3>
                     <p>Manajemen data, normalisasi, dan perancangan skema relasional yang efisien.</p>
                 </div>
-                <!-- Kartu Skill 3 -->
                 <div class="skill-card">
                     <i class="fa-solid fa-sitemap icon"></i>
                     <h3>System Design</h3>
-                    <p>Pembuatan flowchart, alur logika program, dan arsitektur sistem.</p>
+                    <p>Pembuatan *flowchart*, alur logika program, dan arsitektur sistem.</p>
                 </div>
-                <!-- Kartu Skill 4 -->
                 <div class="skill-card">
                     <i class="fa-solid fa-toolbox icon"></i>
                     <h3>Tools & Kreatif</h3>
@@ -87,15 +83,17 @@
         <div class="reveal">
             <h2 class="section-title">Mari Terhubung</h2>
             <p class="contact-desc">Punya ide proyek atau sekadar ingin berdiskusi soal teknologi? Kirimkan pesan di bawah ini.</p>
-            <form id="contactForm" class="contact-form">
+            
+            <!-- FORM YANG SUDAH TERHUBUNG KE FORMSPREE -->
+            <form id="contactForm" class="contact-form" action="https://formspree.io/f/mrpzzblr" method="POST">
                 <div class="input-group">
-                    <input type="text" id="nama" placeholder="Nama Lengkap" required>
+                    <input type="text" id="nama" name="nama" placeholder="Nama Lengkap" required>
                 </div>
                 <div class="input-group">
-                    <input type="email" id="email" placeholder="Alamat Email" required>
+                    <input type="email" id="email" name="email" placeholder="Alamat Email" required>
                 </div>
                 <div class="input-group">
-                    <textarea id="pesan" rows="5" placeholder="Tulis pesan Anda di sini..." required></textarea>
+                    <textarea id="pesan" name="pesan" rows="5" placeholder="Tulis pesan Anda di sini..." required></textarea>
                 </div>
                 <button type="submit" class="btn btn-primary w-100">Kirim Pesan <i class="fa-solid fa-paper-plane"></i></button>
             </form>
@@ -106,7 +104,7 @@
     <!-- Footer -->
     <footer>
         <div class="footer-content">
-            <p>&copy; 2026 Muhammad Raihan Fadillah. Dibangun dengan kode dan secangkir kopi.</p>
+            <p>&copy; 2026 Raihan Fadillah. Dibangun dengan kode murni.</p>
         </div>
     </footer>
 
