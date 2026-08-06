@@ -3,159 +3,119 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portofolio | Muhammad Raihan Fadillah</title>
+    <title>TaskFlow | Immersive 3D Portfolio</title>
     <link rel="stylesheet" href="style.css">
-    <!-- Font Google -->
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-    <!-- FontAwesome untuk Ikon -->
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Three.js CDN untuk Animasi 3D Latar Belakang -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 </head>
 <body>
-    <!-- Elemen Cahaya Latar Belakang -->
-    <div class="bg-glow bg-glow-1"></div>
-    <div class="bg-glow bg-glow-2"></div>
 
-    <!-- Navigasi -->
-    <header>
-        <nav class="navbar">
-            <h1 class="logo">MRF<span class="dot">.</span></h1>
-            
-            <!-- Tombol Hamburger untuk HP -->
-            <div class="menu-toggle" id="mobile-menu">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
+    <!-- Kanvas Three.js untuk Background 3D Immersive -->
+    <canvas id="bgCanvas"></canvas>
+
+    <div class="app-container">
+        <!-- Header Aplikasi -->
+        <header class="app-header">
+            <div class="header-title">
+                <h1>TaskFlow<span class="dot">.</span></h1>
+                <p>Immersive 3D Workspace & Task Manager.</p>
+            </div>
+            <div class="header-actions">
+                <button id="themeToggleBtn" class="theme-btn" title="Ganti Tema">
+                    <i class="fa-solid fa-moon"></i>
+                </button>
+            </div>
+        </header>
+
+        <!-- Kartu Utama To-Do App dengan Efek 3D Depth & Tilt -->
+        <main class="todo-card" id="tiltCard">
+            <!-- Statistik Progress Bar -->
+            <div class="progress-container">
+                <div class="progress-info">
+                    <span>Progress Penyelesaian</span>
+                    <span id="progressText">0%</span>
+                </div>
+                <div class="progress-bar-bg">
+                    <div id="progressBarFill" class="progress-bar-fill"></div>
+                </div>
             </div>
 
-            <ul class="nav-links">
-                <li><a href="#beranda">Beranda</a></li>
-                <li><a href="#tentang">Tentang</a></li>
-                <li><a href="#keahlian">Keahlian</a></li>
-                <li><a href="#proyek">Proyek</a></li>
-                <li><a href="#kontak">Kontak</a></li>
+            <!-- Form Input Tugas -->
+            <div class="todo-form">
+                <input type="text" id="todoInput" placeholder="Tambahkan tugas 3D interaktif...">
+                <div class="form-row">
+                    <div class="input-group-date" title="Deadline">
+                        <label for="todoDate"><i class="fa-regular fa-calendar"></i></label>
+                        <input type="date" id="todoDate">
+                    </div>
+                    <div class="input-group-priority">
+                        <select id="todoPriority">
+                            <option value="low">Rendah</option>
+                            <option value="medium" selected>Sedang</option>
+                            <option value="high">Penting</option>
+                        </select>
+                    </div>
+                    <div class="input-group-category">
+                        <select id="todoCategory">
+                            <option value="Kuliah">Kuliah</option>
+                            <option value="Koding">Koding</option>
+                            <option value="Pribadi">Pribadi</option>
+                            <option value="Lainnya">Lainnya</option>
+                        </select>
+                    </div>
+                    <button id="addTodoBtn" class="btn-add">
+                        <i class="fa-solid fa-plus"></i> Tambah
+                    </button>
+                </div>
+            </div>
+
+            <!-- Toolbar (Pencarian & Sorting) -->
+            <div class="toolbar">
+                <div class="search-container">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" id="searchInput" placeholder="Cari tugas...">
+                </div>
+                <div class="sort-container">
+                    <select id="sortSelect" title="Urutkan Tugas">
+                        <option value="default">Urutkan</option>
+                        <option value="deadline">Deadline Terdekat</option>
+                        <option value="priority">Prioritas Tertinggi</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Filter Kategori & Status -->
+            <div class="filter-container">
+                <button class="filter-btn active" data-filter="all">Semua</button>
+                <button class="filter-btn" data-filter="active">Aktif</button>
+                <button class="filter-btn" data-filter="completed">Selesai</button>
+            </div>
+
+            <!-- Daftar Tugas -->
+            <ul id="todoList" class="todo-list">
+                <!-- Tugas dinamis -->
             </ul>
-        </nav>
-    </header>
 
-    <!-- Bagian Perkenalan (Hero) -->
-    <section id="beranda" class="hero">
-        <div class="hero-content reveal">
-            <div class="badge">Selamat Datang</div>
-            <h2>Muhammad Raihan Fadillah</h2>
-            <h3 class="typing-text"><span id="typewriter"></span><span class="cursor">|</span></h3>
-            <p class="desc">Menciptakan solusi efisien melalui baris kode, arsitektur sistem yang terstruktur, dan perancangan basis data yang solid.</p>
-            <div class="hero-buttons">
-                <a href="#proyek" class="btn btn-primary">Lihat Karya <i class="fa-solid fa-arrow-right"></i></a>
-                <a href="#kontak" class="btn btn-outline">Mari Berdiskusi</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Bagian Tentang -->
-    <section id="tentang" class="about">
-        <div class="reveal">
-            <h2 class="section-title">Tentang Saya</h2>
-            <div class="about-content">
-                <p>Saya mendalami dunia teknologi dengan fokus pada keandalan backend dan logika pemrograman. Mulai dari merancang alur sistem yang presisi hingga mengimplementasikan Object-Oriented Programming yang tangguh, saya berdedikasi untuk membangun perangkat lunak yang tidak hanya berfungsi maksimal, tetapi juga dirancang dengan estetika dan struktur kode yang elegan.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Bagian Keahlian -->
-    <section id="keahlian" class="skills">
-        <div class="reveal">
-            <h2 class="section-title">Keahlian <span class="highlight">&</span> Alat</h2>
-            <div class="skill-container">
-                <div class="skill-card">
-                    <div class="icon-wrapper"><i class="fa-solid fa-code icon"></i></div>
-                    <h3>C++ & Python</h3>
-                    <p>Pengembangan algoritma, otomatisasi, dan penciptaan utilitas sistem berperforma tinggi.</p>
-                </div>
-                <div class="skill-card">
-                    <div class="icon-wrapper"><i class="fa-solid fa-database icon"></i></div>
-                    <h3>Basis Data</h3>
-                    <p>Manajemen relasional, normalisasi arsitektur, dan optimasi kueri yang efisien.</p>
-                </div>
-                <div class="skill-card">
-                    <div class="icon-wrapper"><i class="fa-solid fa-sitemap icon"></i></div>
-                    <h3>System Design</h3>
-                    <p>Perancangan struktur visual, alur logika, dan fondasi flowchart yang komprehensif.</p>
-                </div>
-                <div class="skill-card">
-                    <div class="icon-wrapper"><i class="fa-solid fa-layer-group icon"></i></div>
-                    <h3>Kreatif & Utilitas</h3>
-                    <p>Integrasi GitHub Copilot dan perancangan aset visual yang memikat dengan tools modern.</p>
+            <!-- Footer Status & Backup -->
+            <div class="todo-footer">
+                <span id="taskCounter">0 tugas tersisa</span>
+                <div class="footer-actions-btn">
+                    <button id="exportBtn" class="action-link" title="Backup ke JSON"><i class="fa-solid fa-download"></i> Ekspor</button>
+                    <label for="importFile" class="action-link" title="Pulihkan dari JSON" style="cursor: pointer;"><i class="fa-solid fa-upload"></i> Impor</label>
+                    <input type="file" id="importFile" accept=".json" style="display: none;">
+                    <button id="clearAllBtn" class="clear-btn">Hapus Selesai</button>
                 </div>
             </div>
-        </div>
-    </section>
+        </main>
 
-    <!-- Bagian Proyek / Eksplorasi Kode -->
-    <section id="proyek" class="projects">
-        <div class="reveal">
-            <h2 class="section-title">Eksplorasi <span class="highlight">& Proyek</span></h2>
-            <p class="contact-desc">Kumpulan latihan logika, eksplorasi kode, dan perancangan sistem yang sedang saya kembangkan.</p>
-            <div class="project-container">
-                <!-- Proyek 1 -->
-                <div class="project-card">
-                    <div class="project-icon"><i class="fa-solid fa-code"></i></div>
-                    <h3>Logika & Utilitas C++</h3>
-                    <p>Eksplorasi struktur data dasar, algoritma pemecahan masalah, dan latihan pemrograman berorientasi objek.</p>
-                    <div class="tags">
-                        <span>C++</span><span>Algorithms</span>
-                    </div>
-                </div>
-                <!-- Proyek 2 -->
-                <div class="project-card">
-                    <div class="project-icon"><i class="fa-brands fa-python"></i></div>
-                    <h3>Otomatisasi & Skrip Python</h3>
-                    <p>Pengembangan program mini untuk memahami logika pemrograman tingkat lanjut dan efisiensi skrip.</p>
-                    <div class="tags">
-                        <span>Python</span><span>OOP</span>
-                    </div>
-                </div>
-                <!-- Proyek 3 -->
-                <div class="project-card">
-                    <div class="project-icon"><i class="fa-solid fa-database"></i></div>
-                    <h3>Perancangan Basis Data</h3>
-                    <p>Latihan normalisasi tabel, pembuatan ERD, dan penyusunan kueri relasional yang terstruktur.</p>
-                    <div class="tags">
-                        <span>SQL</span><span>Database Design</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Bagian Kontak -->
-    <section id="kontak" class="contact">
-        <div class="reveal">
-            <h2 class="section-title">Mari Terhubung</h2>
-            <p class="contact-desc">Siap untuk merealisasikan ide besar? Tinggalkan pesan dan mari berdiskusi.</p>
-            
-            <!-- Form Kontak Terhubung ke Formspree -->
-            <form id="contactForm" class="contact-form" action="https://formspree.io/f/mrpzzblr" method="POST">
-                <div class="input-group">
-                    <input type="text" id="nama" name="nama" placeholder="Nama Lengkap" required>
-                </div>
-                <div class="input-group">
-                    <input type="email" id="email" name="email" placeholder="Alamat Email" required>
-                </div>
-                <div class="input-group">
-                    <textarea id="pesan" name="pesan" rows="5" placeholder="Tuliskan pesan Anda di sini..." required></textarea>
-                </div>
-                <button type="submit" class="btn btn-primary w-100">Kirim Pesan Sekarang <i class="fa-solid fa-paper-plane"></i></button>
-            </form>
-            <p id="statusPesan" class="status-message"></p>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <div class="footer-content">
-            <p>&copy; 2026 Muhammad Raihan Fadillah. Dibangun dengan presisi dan secangkir kopi.</p>
-        </div>
-    </footer>
+        <footer class="app-footer">
+            <p>&copy; 2026 TaskFlow. Immersive 3D Experience.</p>
+        </footer>
+    </div>
 
     <script src="script.js"></script>
 </body>
